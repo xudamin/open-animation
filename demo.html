@@ -125,7 +125,7 @@
       * [ table sphere helix grid ] transform CSS3D elem'position to one of these for animation
     	 */
 
-    	const table   = [
+    	const table = [
         "H", "Hydrogen", "1.00794", 1, 1,
         "He", "Helium", "4.002602", 18, 1,
         "Li", "Lithium", "6.941", 1, 2,
@@ -352,7 +352,7 @@
 				const object 	    = new THREE.CSS3DObject( element );
 				object.position.x   = Math.random() * 4000 - 2000;
 				object.position.y   = Math.random() * 4000 - 2000;
-				object.position.z   = Math.random() * 4000 - 2000;
+        object.position.z   = Math.random() * 4000 - 2000;
 				scene.add( object );
 				objects.push( object );
 			}
