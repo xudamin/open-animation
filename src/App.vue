@@ -4,14 +4,13 @@
     <div id="container">
     	<!-- 选中菜单结构 start-->
     	<div id="menu">
-    		<button id="table">TABLE</button>
-    		<button id="sphere">SPHERE</button>
-    		<button id="sphere2">SPHERE2</button>
-    		<button id="plane">PLANE</button>
-    		<button id="helix">HELIX</button>
-    		<button id="grid">GRID</button>
+    		<button id="table">T</button>
+    		<button id="grid">G</button>
+    		<button id="sphere">s</button>
+    		<button id="sphere2">S</button>
+    		<button id="plane">P</button>
+    		<button id="helix">H</button>
     	</div>
-    	<!-- end -->
     </div>
     <div class="footer"></div>
   </div>
@@ -69,13 +68,13 @@ export default {
         '执法检查', '../static/img/zfjc.png', 'large', 12, 1,
         '指挥调度', '../static/img/zhdd.png', 'large', 10, 2,
 
-        '系统档案', '../static/img/zhdd.png', 'large', 3, 5,
-        '监管对象', '../static/img/zhdd.png', 'large', 4, 5,
-        '智慧公安', '../static/img/zhdd.png', 'large', 5, 5,
-        '邮件专项', '../static/img/zhdd.png', 'large', 6, 5,
-        '业务库', '../static/img/zhdd.png', 'large', 7, 5,
-        '知识库', '../static/img/zhdd.png', 'large', 8, 5,
-        '资源库', '../static/img/zhdd.png', 'large', 9, 5
+        '系统档案', '../static/img/xtda.png', 'small', 3, 5,
+        '监管对象', '../static/img/jgdx.png', 'small', 4, 5,
+        '智慧公安', '../static/img/zhga.png', 'small', 5, 5,
+        '邮件专项', '../static/img/yjzx.png', 'small', 6, 5,
+        '业务库', '../static/img/ywk.png', 'small', 7, 5,
+        '知识库', '../static/img/zsk.png', 'small', 8, 5,
+        '资源库', '../static/img/zyk.png', 'small', 9, 5
       ]
     }
   },
@@ -311,9 +310,9 @@ export default {
       let i = 0
       for (; i < this.objLength; ++i) {
         const object = new THREE.Object3D()
-        object.position.x = 360 * (i % 5) - 800
-        object.position.y = -360 * ((i / 5 >> 0) % 5) + 700
-        object.position.z = -700 * (i / 25 >> 0)
+        object.position.x = 360 * (i % 3) - 360
+        object.position.y = -360 * ((i / 3 >> 0) % 3) + 500
+        object.position.z = -500 * (i / 9 >> 0)
         this.targets.grid.push(object)
       }
     },
@@ -397,7 +396,7 @@ export default {
     transformSphere2(duration) {
       let self = this
       TWEEN.removeAll()
-      const sphereGeom = new THREE.SphereGeometry(800, 6, 8)
+      const sphereGeom = new THREE.SphereGeometry(800, 8, 4)
       const vertices = sphereGeom.vertices
       const vector = new THREE.Vector3()
       for (let i = 0; i < this.objLength; ++i) {
@@ -423,7 +422,7 @@ export default {
     },
     transformPlane(duration) {
       TWEEN.removeAll()
-      const planeGeom = new THREE.PlaneGeometry(1400, 1800, 10, 10)
+      const planeGeom = new THREE.PlaneGeometry(this.innerWH.x * 0.75, this.innerWH.y * 0.65, 10, 4)
       const vertices = planeGeom.vertices
       // const vector = new THREE.Vector3()
       for (let i = 0; i < this.objLength; ++i) {
@@ -501,6 +500,7 @@ body {
   z-index: 10;
   left: 0;
   top: 128px;
+  transition: all 0.5 ease;
   .group{
     position: relative;
     width: 25%;
@@ -534,19 +534,19 @@ body {
 	#menu {
 		position: absolute;
 		z-index: 100;
-		width: 120px;
+		width: 180px;
     right: 0;
-		bottom: 50px;
+		top: 50px;
 		text-align: center;
-		font-size: 12px
+		font-size: 10px
 	}
 	button {
 		border: none;
 		background-color: transparent;
 		color: rgba( 127, 255, 255, 0.75 );
-		padding: 4px 8px;
+		padding: 2px 4px;
 		cursor: pointer;
-		outline: 1px solid rgba( 127, 255, 255, 0.75 );
+		outline: 1px solid rgb(128, 213, 255);
 	}
 	button:hover {
 		background-color: rgba( 127, 255, 255, 0.5 )
@@ -555,6 +555,14 @@ body {
 		background-color: rgba( 127, 255, 255, 0.75 )
 	}
 	/*end*/
+
+  #toggle {
+    font-size: 12px;
+    position: absolute;
+    right: 32px;
+    bottom: 8px;
+    color: rgba( 127, 255, 255, 0.75 )
+  }
 
 	/*元素样式start*/
 	.element {
