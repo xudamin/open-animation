@@ -5,11 +5,11 @@
     	<!-- 选中菜单结构 start-->
     	<div id="menu">
     		<button id="table">T</button>
-    		<button id="grid">G</button>
-    		<button id="sphere">s</button>
-    		<button id="sphere2">S</button>
     		<button id="plane">P</button>
     		<button id="helix">H</button>
+    		<button id="sphere">s</button>
+    		<button id="sphere2">S</button>
+    		<button id="grid">G</button>
     	</div>
     </div>
     <div class="footer"></div>
@@ -220,6 +220,9 @@ export default {
         title.className = 'title'
         title.textContent = this.table[ i ]
         element.appendChild(title)
+        element.onclick = function() {
+          alert(title.textContent)
+        }
 
         const object = new THREE.CSS3DObject(element)
         object.renderOrder = 5
@@ -334,42 +337,42 @@ export default {
       let groupBg = document.getElementsByClassName('group-container')
       planeBtn.addEventListener('click', function() {
         this.page = 2
-        this.orbitControls.enabled = true
-        this.transformPlane(2000)
+        this.orbitControls.enabled = false
+        this.transformPlane(1500)
         groupBg[0].style.display = 'none'
       }.bind(this), false)
       sphere2Btn.addEventListener('click', function() {
         this.page = 2
         this.orbitControls.enabled = true
-        this.transformSphere2(2000)
+        this.transformSphere2(1500)
         groupBg[0].style.display = 'none'
       }.bind(this), false)
       gridBtn.addEventListener('click', function() {
         this.page = 2
         this.orbitControls.enabled = true
-        this.transform(this.targets.grid, 2000)
+        this.transform(this.targets.grid, 1500)
         groupBg[0].style.display = 'none'
       }.bind(this), false)
       tableBtn.addEventListener('click', function() {
         this.page = 1
         this.orbitControls.enabled = false
-        this.transform(this.targets.table, 2000)
+        this.transform(this.targets.table, 1500)
         groupBg[0].style.display = 'block'
         this.resetControl()
       }.bind(this), false)
       helixBtn.addEventListener('click', function() {
         this.page = 2
         this.orbitControls.enabled = true
-        this.transform(this.targets.helix, 2000)
+        this.transform(this.targets.helix, 1500)
         groupBg[0].style.display = 'none'
       }.bind(this), false)
       sphereBtn.addEventListener('click', function() {
         this.page = 2
         this.orbitControls.enabled = true
-        this.transform(this.targets.sphere, 2000)
+        this.transform(this.targets.sphere, 1500)
         groupBg[0].style.display = 'none'
       }.bind(this), false)
-      this.transform(this.targets.table, 2000)
+      this.transform(this.targets.table, 1500)
     },
     transform(targets, duration) {
       let self = this
